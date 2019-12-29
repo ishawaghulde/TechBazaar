@@ -34,7 +34,7 @@ app.get('/products/:category', (req, res) => {
 
         })
        
-        res.send(parrJSON)
+        res.send(parr)
     
     }).catch((error) => {
         res.status(500).send(error)
