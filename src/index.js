@@ -49,11 +49,7 @@ app.get('/products/:category/:sub_category', (req, res) => {
         if(!products){
             return res.status(404).send()
         }
-        const data = products
-        data.forEach((product) => {
-            arr.push(product.product)
-        })
-        res.send(arr)
+        res.send(products)
     
     }).catch((error) => {
         res.status(500).send(error)
