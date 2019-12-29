@@ -20,6 +20,7 @@ app.post('/products', (req, res) => {
 app.get('/products/:category', (req, res) => {
     const category = req.params.category
     var arr = new Array()
+    var parr = new Array()
     Product.find({category : category}).then((products) => {
         if(!products){
             return res.status(404).send()
@@ -28,11 +29,12 @@ app.get('/products/:category', (req, res) => {
         data.forEach((product) => {
             if(!arr.includes(product.sub_category)){
                 arr.push(product.sub_category)
+                parr.push(product)
             }
 
         })
        
-        res.send(arr)
+        res.send(parrJSON)
     
     }).catch((error) => {
         res.status(500).send(error)
