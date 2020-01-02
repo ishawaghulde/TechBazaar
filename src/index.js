@@ -1,5 +1,6 @@
 const express = require('express')
 const Product = require('./models/HomeAppliances')
+const Item = require('./models/Items')
 require('./db/mongoose')
 
 
@@ -13,6 +14,15 @@ app.post('/products', (req, res) => {
     product.save().then(() => {
         res.status(201).send(product)
     }).catch( (error) => {
+        res.status(400).send(error)
+    })
+})
+
+app.post('/items', (req, res) => {
+    const item = new Item(req.body)
+    item.save().then(() => {
+        res.status(201).send()
+    }).catch((error)=> {
         res.status(400).send(error)
     })
 })
