@@ -27,6 +27,14 @@ app.post('/items', (req, res) => {
     })
 })
 
+app.get('/items/all', (req, res) => {
+    Item.find({}).then((items) => {
+        res.send(items)
+    }).catch((error) => {
+        res.status(500).send(error)
+    })
+})
+
 app.get('/products/:category', (req, res) => {
     const category = req.params.category
     var arr = new Array()
