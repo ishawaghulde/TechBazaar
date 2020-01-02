@@ -21,7 +21,7 @@ app.post('/products', (req, res) => {
 app.post('/items', (req, res) => {
     const item = new Item(req.body)
     item.save().then(() => {
-        res.status(201).send()
+        res.status(201).send(item)
     }).catch((error)=> {
         res.status(400).send(error)
     })
